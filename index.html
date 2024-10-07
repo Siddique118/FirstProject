@@ -1,4 +1,121 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental State Examination Logbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #e9ecef;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mental State Examination Logbook</h1>
+        <form id="mseForm">
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="mood">Mood:</label>
+            <input type="text" id="mood" required>
+
+            <label for="affect">Affect:</label>
+            <input type="text" id="affect" required>
+
+            <label for="thoughtContent">Thought Content:</label>
+            <textarea id="thoughtContent" required></textarea>
+
+            <label for="insight">Insight:</label>
+            <input type="text" id="insight" required>
+
+            <button type="submit">Add Entry</button>
+        </form>
+
+        <h2>Logbook Entries</h2>
+        <ul id="logEntries"></ul>
+    </div>
     
+    <script src="script.js">document.getElementById('mseForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+  
+      // Get values from the form
+      const date = document.getElementById('date').value;
+      const mood = document.getElementById('mood').value;
+      const affect = document.getElementById('affect').value;
+      const thoughtContent = document.getElementById('thoughtContent').value;
+      const insight = document.getElementById('insight').value;
+  
+      // Create a new list item
+      const logEntry = document.createElement('li');
+      logEntry.innerHTML = `<strong>Date:</strong> ${date}<br>
+                            <strong>Mood:</strong> ${mood}<br>
+                            <strong>Affect:</strong> ${affect}<br>
+                            <strong>Thought Content:</strong> ${thoughtContent}<br>
+                            <strong>Insight:</strong> ${insight}`;
+  
+      // Append the new entry to the list
+      document.getElementById('logEntries').appendChild(logEntry);
+  
+      // Clear the form
+      document.getElementById('mseForm').reset();
+  });
+  </script>
+</body>
 </html>
